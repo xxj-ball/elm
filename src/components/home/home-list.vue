@@ -13,7 +13,7 @@
       </div>
       
       <ul class="list">
-          <li v-for="item in data" :key='item.id' class="goods" @click="detailsAction(item)">
+          <li v-for="(item,index) in data" :key='item.id' class="goods" @click="detailsAction(item,index)">
                   <div class="top">
                       <img :src="item.image_path">
                       <div class="details">
@@ -91,8 +91,9 @@ export default {
         selectAction(){
             this.$emit('select');
         },
-        detailsAction(item){
+        detailsAction(item,index){
             this.$router.push({name:'details',params:{id:item.id}})
+            this.$emit('imgAction',item.image_path);
         }
     },
     mounted(){

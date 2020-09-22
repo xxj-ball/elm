@@ -1,9 +1,10 @@
 <template>
+<div class="sc" ref="sc">
   <div class="header">
-      <div class="image" :style="{backgroundImage:'url('+dataImg.path1+')'}">
+      <div class="image" :style="{backgroundImage:'url(https://cube.elemecdn.com/5/37/ee95509e19a4001f2a86c369d2d96png.png)'}">
           <span class="iconfont iconfanhui" @click="backAction"></span>
       </div>
-      <img :src='dataImg.path2' class="logo">
+      <img src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=534333352,2268662817&fm=26&gp=0.jpg' class="logo">
       <div class="title">
           <h3 class="tit">{{detailsList.rst.name}}</h3>
           <div class="evaluate">
@@ -20,56 +21,36 @@
               <p>{{detailsList.rst.promotion_info}}</p>
           </div>
       </div>
-      <div class="tab">
+      <div class="tab" ref="tab" :class="{act:tabShow}" :style="{top:heig}">
           <div v-for="(item,index) in tabList" :key="index" class="nav" :class="{show:text==item}" @click="selectAction(item)">
               <p>{{item}}</p>
               <span :class="{active:text==item}"></span>
           </div>
+          
       </div>
-      <div class="box">
-        <div class="safe">
-            <img :src="dataImg.path3">
-        </div>
-        <div class="top">
-                <p>{{foodsData.name}}</p>
-                <ul class="list">
-                    <li v-for="(item,index) in foodsData.items" :key="item.item_id" class="foods">
-                        <img :src="foodsData.foodImg[index]">
-
-                    </li>
-                </ul>
-        </div>
-        <div class="toggle">
-            <div class="left">
-                <ul class="listOne">
-                    <li class="tab-list" v-for="(item,index) in detailsList.menu" :key="index" >
-                        <span>{{item.name}}</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="right">
-                <p>{{foodsData.name}}</p>
-                <ul class="listTwo">
-                    <li v-for="(item) in foodsData.items" :key="item.item_id">
-                        <!-- <img :src="foodsData.foodImg[index]"> -->
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </div>
+      <tab-one @touchAction='touchAction'/>
       
+  </div>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
+import tabOne from './details/tabOne'
 export default {
+    components:{
+        tabOne
+    },
+    props:{
+        da:String
+    },
     data(){
         return{
             img:'',
             tabList:['点餐','评价','商家'],
-            text:'点餐'
+            text:'点餐',
+            tabShow:false,
+            heig:''
         }
     },
     computed:{
@@ -77,6 +58,7 @@ export default {
             detailsList:state=>state.details.detailsList,
             dataImg:state=>state.details.dataImg,
             foodsData:state=>state.details.foodsData,
+            data:state=>state.goods.goodsData,
         })
     },
     methods:{
@@ -85,15 +67,44 @@ export default {
         },
         backAction(){
             this.$router.back();
+        },
+        touchAction(){
+            // this.scroll.scrollTo(0,-466,300);
         }
     },
     mounted(){
-        
+        // console.log(this.$refs.tab.offsetTop);
+        const scroll=this.scroll=new IScroll(this.$refs.sc,{
+            tap: true,
+            click: true,
+            probeType: 3,
+        });
+        scroll.on('beforeScrollStart', ()=>{
+        scroll.refresh();
+        });
+        scroll.on('scroll',()=>{
+            if(scroll.y < (-1 * this.$refs.tab.offsetTop)){
+                // console.log(scroll.y);
+                this.tabShow = true;
+                this.heig = (-1 * scroll.y) +'px';
+            }else{
+                this.tabShow = false;
+            }
+        })
     }
 }
 </script>
 
 <style scoped lang="scss">
+.sc{
+    height: 100%;
+    overflow: hidden;
+}
+.act{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 .header{
     width: 100%;
     position: relative;
@@ -180,6 +191,8 @@ export default {
         display: flex;
         align-items: center;
         border-bottom: 1Px solid #eee;
+        background: #fff;
+        z-index: 300;
         .nav{
             flex: 1;
             text-align: center;
@@ -198,49 +211,6 @@ export default {
             transform: translateX(-50%);
             top: 50px;
             background-color: rgb(35, 149, 255);
-        }
-    }
-    .safe{
-        width: 100%;
-        height: 176px;
-        padding-top: 14px;
-        img{
-            display: block;
-            margin: 0 32px;
-            height: 100%;
-        }
-    }
-    .top{
-        width: 100%;
-        .list{
-            width: 100%;
-            box-sizing: border-box;
-            padding-left: 32px;
-            display: flex;
-            .foods{
-                width: 240px;
-                padding-bottom: 32px;
-                margin-right: 20px;
-                img{
-                    width: 240px;
-                }
-            }
-        }
-    }
-    .toggle{
-        width: 100%;
-        padding-top:32px;
-        display: flex;
-        .left{
-            width: 20%;
-            display: flex;
-            flex-direction: column;
-        }
-        .right{
-            width: 80%;
-            .listTwo{
-                width: 100%;
-            }
         }
     }
     

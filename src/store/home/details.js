@@ -13,14 +13,14 @@ export default{
     mutations:{
         setData(state,payload){
             state.detailsList = payload;
-            // console.log(state.detailsList);
+            console.log(state.detailsList);
         },
-        setImg(state,payload){
-            state.dataImg = payload;
-        },
+        // setImg(state,payload){
+        //     state.dataImg = payload;
+        // },
         setDataAction(state,payload){
             state.foodsData = payload;
-            console.log(state.foodsData);
+            // console.log(state.foodsData);
         }
     },
     actions:{
@@ -39,10 +39,10 @@ export default{
                 if(item.rst.id==payload){
                    console.log(item);
                     context.commit('setData',item);
-                    let path1 = `https://cube.elemecdn.com/${item.rst.shop_sign.image_hash.slice(0,1)}/${item.rst.shop_sign.image_hash.slice(1, 3)}/${item.rst.shop_sign.image_hash.slice(3)}.${(item.rst.shop_sign.image_hash.match(/(JPEG|jpeg|png|PNG)/g))}`;   
-                    let path2 = `https://cube.elemecdn.com/${item.rst.image_path.slice(0,1)}/${item.rst.image_path.slice(1, 3)}/${item.rst.image_path.slice(3)}.${(item.rst.image_path.match(/(JPEG|jpeg|png|PNG)/g))}`;
-                    let path3 = `https://cube.elemecdn.com/${item.rst.posters[0].image_hash.slice(0,1)}/${item.rst.posters[0].image_hash.slice(1, 3)}/${item.rst.posters[0].image_hash.slice(3)}.${(item.rst.posters[0].image_hash.match(/(JPEG|jpeg|png|PNG)/g))}`;
-                    context.commit('setImg',{path1,path2,path3});
+                    // let path1 = `https://cube.elemecdn.com/${item.rst.shop_sign.image_hash.slice(0,1)}/${item.rst.shop_sign.image_hash.slice(1, 3)}/${item.rst.shop_sign.image_hash.slice(3)}.${(item.rst.shop_sign.image_hash.match(/(JPEG|jpeg|png|PNG)/g))}`;   
+                    // let path2 = `https://cube.elemecdn.com/${item.rst.image_path.slice(0,1)}/${item.rst.image_path.slice(1, 3)}/${item.rst.image_path.slice(3)}.${(item.rst.image_path.match(/(JPEG|jpeg|png|PNG)/g))}`;
+                    // let path3 = `https://cube.elemecdn.com/${item.rst.posters[0].image_hash.slice(0,1)}/${item.rst.posters[0].image_hash.slice(1, 3)}/${item.rst.posters[0].image_hash.slice(3)}.${(item.rst.posters[0].image_hash.match(/(JPEG|jpeg|png|PNG)/g))}`;
+                    // context.commit('setImg',{path1,path2,path3});
                     let foodImg = item.recommend.items.map(item=>`https://cube.elemecdn.com/${item.image_path.slice(0,1)}/${item.image_path.slice(1, 3)}/${item.image_path.slice(3)}.${(item.image_path.match(/(JPEG|jpeg|png|PNG)/g))}`)
                      let foodsData = {...item.recommend,foodImg} 
                      context.commit('setDataAction',foodsData);

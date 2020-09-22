@@ -1,11 +1,11 @@
 <template>
 <div>
-  <router-view/>
+  <router-view :da='img'/>
   <div class="home pages">
     <div class="scrollWrap" ref="scroll">
       <div class="view">
         <home-top :position='position' :y='y1' @topAction='topAction'/>
-        <home-list @listAction="listAction" @rank='rank' @select="selectAction" :listShow='listShow' :y='y2' :replaceText='rankText'/>
+        <home-list @listAction="listAction" @rank='rank' @select="selectAction" :listShow='listShow' :y='y2' :replaceText='rankText' @imgAction='imgAction'/>
       </div>
     </div>
     <div class="rankList" v-if="show" :style="{top:'182px'}" @click="showAction">
@@ -74,7 +74,8 @@ export default {
       show:false,
       rankText:'综合排序',
       selectShow:false,
-      sailData:['￥20以下','￥20-￥40','￥40-￥60','￥60-￥80','￥80-￥100','￥100以上']
+      sailData:['￥20以下','￥20-￥40','￥40-￥60','￥60-￥80','￥80-￥100','￥100以上'],
+      img:''
     }
   },
   computed:{
@@ -111,6 +112,10 @@ export default {
     },
     closeAction(){
       this.selectShow=false;
+    },
+    imgAction(img){
+      this.img = img;
+      // console.log(img);
     }
   },
   created(){
@@ -210,8 +215,10 @@ export default {
         flex-direction: row;
         width: 100%;
         flex-wrap: wrap;
-        justify-content: space-between;
+        // justify-content: space-between;
+        
         li{
+          align-self: flex-start;
           width: 30%;
           height: 70px;
           background:#fafafa; 
