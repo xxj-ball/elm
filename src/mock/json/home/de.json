@@ -1,0 +1,263 @@
+{
+    "data":[
+        {
+            "list":{
+                "icon_url": "db75a248a885c94c389b5bbc5c8d876apng",
+                "grey_icon_url": "b571e9375597c7dd8e5b7bd32120928epng",
+                "text": "买过",
+                "promotion_info": "本店已全面消毒，请放心食用！请点餐时记得选味道，否则默认微辣，如有漏菜情况，可以下次点餐备注给您补上或者致电23912790给您退款！小橙都祝您用餐愉快！"
+            },
+            "menu":[
+                {
+                "description": "大家喜欢吃，才叫真好吃。",
+                "name": "热销",
+                "type": 2,
+                "foods":[
+                    {
+                        "materials": "主要原料：牛肉",
+                        "image_path": "468019c9f3b502931bd2b9218cd902ddjpeg",
+                        "month_sales": 100,
+                        "satisfy_rate": 100,
+                        "name": "牛肉片（5片）",
+                        "price": "7.98"
+                    },
+                    {
+                        "materials": "主要原料：鸭胗",
+                        "image_path": "d3a9a79a24b3c98495b5917015c2108ajpeg",
+                        "month_sales": 27,
+                        "satisfy_rate": 100,
+                        "name": "鸭胗（5片）",
+                        "price": "6.98"
+                    },
+                    {
+                        "materials": "主要原料：蟹肉",
+                        "image_path": "89c0094bfc46f9e47dd475ed7d508753jpeg",
+                        "month_sales": 41,
+                        "satisfy_rate": 100,
+                        "name": "蟹肉棒（3个）",
+                        "price": "6.58"
+                    },
+                    {
+                        "materials": "主要原料：油麦菜",
+                        "image_path": "ca8acf73d3fafcec6aec1b8561ac94fcjpeg",
+                        "month_sales": 34,
+                        "satisfy_rate": 0,
+                        "name": "油麦菜（4根）",
+                        "price": "3.58"
+                    },
+                    {
+                        "materials": "主要原料：莲藕",
+                        "image_path": "dcf2caa4671c16dd96a1f3c353f7d581jpeg",
+                        "month_sales": 71,
+                        "satisfy_rate": 100,
+                        "name": "莲藕（4片）",
+                        "price": "3.98"
+                    },
+                    {
+                        "materials": "主要原料：空心菜",
+                        "image_path": "cdfce6f7aa2577fff2dedc5d098a26e1jpeg",
+                        "month_sales": 86,
+                        "satisfy_rate": 100,
+                        "name": "空心菜（6条）",
+                        "price": "3.98"
+                    }
+                    
+                ]
+                },
+                {
+                    "description": "美味又实惠，大家快来抢",
+                    "name": "热销",
+                    "benefit_text": "22.8元",
+                    "type": 502,
+                    "foods":[
+                        {
+                            "materials": "主要原料：豆芽,娃娃菜,金针菇",
+                            "image_path": "a7c2f48254db5f4b936419c877eefb7ejpeg",
+                            "month_sales": 59,
+                            "satisfy_rate": 100,
+                            "name": "鹌鹑蛋4+6种素菜+1米饭",
+                            "price": "22.8",
+                            "origin_price": "35.8"
+                        },
+                        {
+                            "materials": "主要原料：娃娃菜,金针菇",
+                            "image_path": "4095088fefc859447051313a1702e6dfjpeg",
+                            "month_sales": 33,
+                            "satisfy_rate": 100,
+                            "name": "脆皮肠4+6种素菜+1米饭",
+                            "price": "22.8",
+                            "origin_price": "35.8"
+                        },
+                        {
+                            "materials": "主要原料：娃娃菜,鸡肉,鸭胗,小龙虾",
+                            "image_path": "89c0094bfc46f9e47dd475ed7d508753jpeg",
+                            "month_sales": 41,
+                            "satisfy_rate": 100,
+                            "name": "鸡肉5+鸭胗5+龙虾丸2+6素菜+1米饭",
+                            "price": "22.8",
+                            "origin_price": "55.8"
+                        },
+                        {
+                            "materials": "主要原料：娃娃菜,金针菇,蟹柳,鱼豆腐",
+                            "image_path": "6821e4d8cbdb0b95395fa9ca0234cb6ajpeg",
+                            "month_sales": 3,
+                            "satisfy_rate": 100,
+                            "name": "鱼豆腐2+蟹棒3+鹌鹑蛋4+6素菜+1饭",
+                            "price": "36.8",
+                            "origin_price": "55.8"
+                
+                        },
+                        {
+                            "materials": "主要原料：土豆,娃娃菜,海带,火腿肠,蟹柳",
+                            "image_path": "2e1105760fae23e87260fce3ac64823cjpeg",
+                            "month_sales": 4,
+                            "satisfy_rate": 100,
+                            "name": "蟹肉棒3+火腿肠1+6种素菜+1米饭",
+                            "price": "29.8",
+                            "origin_price": "43.8"
+                        }
+                        
+                    ]
+                },
+                {
+                    "description": "必选-餐具",
+                    "name": "必选品",
+                    "benefit_text": "22.8元",
+                    "type": 4,
+                    "foods":[
+                        {
+                            "materials": "主要原料：其他",
+                            "image_path": "a5894311484bacf667a790da76f9bf62jpeg",
+                            "month_sales": 0,
+                            "satisfy_rate": 0,
+                            "name": "无需餐具",
+                            "price": "0",
+                            "origin_price": "0"
+                        },
+                        {
+                            "materials": "主要原料：其他",
+                            "image_path": "a5894311484bacf667a790da76f9bf62jpeg",
+                            "month_sales": 200,
+                            "satisfy_rate": 100,
+                            "name": "需要餐具",
+                            "price": "0.1",
+                            "origin_price": "0.1"
+                        }
+                    ]
+                },
+                {
+                    "description": "自选荤菜",
+                    "name": "[小橙都]",
+                    "type": 2,
+                    "foods":[
+                        {
+                            "materials": "主要原料：鱼丸",
+                            "image_path": "ed068190f506f59073bc0953c8fc18dbjpeg",
+                            "month_sales": 15,
+                            "satisfy_rate": 100,
+                            "name": "鱼丸（2个）",
+                            "price": "6.58"
+                        },
+                        {
+                            "materials": "主要原料：猪肉",
+                            "image_path": "d3a9a79a24b3c98495b5917015c2108ajpeg",
+                            "month_sales": 1,
+                            "satisfy_rate": 0,
+                            "name": "燕饺（2个）",
+                            "price": "6.58"
+                        },
+                        {
+                            "materials": "主要原料：猪肉",
+                            "image_path": "d01b43ba489f7ef52e1609f7e3311549jpeg",
+                            "month_sales":15,
+                            "satisfy_rate": 100,
+                            "name": "虾米饺（4个）",
+                            "price": "6.58"
+                        },
+                        {
+                            "materials": "主要原料：牛肉",
+                            "image_path": "468019c9f3b502931bd2b9218cd902ddjpeg",
+                            "month_sales": 100,
+                            "satisfy_rate": 100,
+                            "name": "牛肉片（5片）",
+                            "price": "7.98"
+                        },
+                        {
+                            "materials": "主要原料：火腿肠",
+                            "image_path": "0313f59fa7c6d5bdc4eb03074df92dfdjpeg",
+                            "month_sales": 71,
+                            "satisfy_rate": 100,
+                            "name": "火腿肠（1条）",
+                            "price": "6.58"
+                        },
+                        {
+                            "materials": "主要原料：鸡翅",
+                            "image_path": "dc1a55b6475f8765a6de85b50868964ejpeg",
+                            "month_sales": 86,
+                            "satisfy_rate": 100,
+                            "name": "鸡中翅（1个）",
+                            "price": "7.58"
+                        }
+                        
+                    ]
+                },
+                {
+                    "description": "解解渴",
+                    "name": "[小橙都]",
+                    "type": 2,
+                    "foods":[
+                        {
+                            "materials": "主要原料：柠檬",
+                            "image_path": "600ad1f99b3fd92bebf50352dbb16a01jpeg",
+                            "month_sales": 1,
+                            "satisfy_rate": 0,
+                            "name": "柠檬茶",
+                            "price": "7"
+                        },
+                        {
+                            "materials": "主要原料：汽水",
+                            "image_path": "41e84114129eaccf2fcd0108a9953748jpeg",
+                            "month_sales": 3,
+                            "satisfy_rate": 0,
+                            "name": "可口可乐",
+                            "price": "5"
+                        },
+                        {
+                            "materials": "主要原料：水",
+                            "image_path": "fc1eb8b85c88fe14035ce6fb7fe43de9jpeg",
+                            "month_sales":1,
+                            "satisfy_rate": 0,
+                            "name": "矿泉水",
+                            "price": "4"
+                        },
+                        {
+                            "materials": "主要原料：椰汁",
+                            "image_path": "df36cd9aaca9b4b61b6090581793d9a1jpeg",
+                            "month_sales": 1,
+                            "satisfy_rate": 0,
+                            "name": "椰树椰汁",
+                            "price": "7"
+                        },
+                        {
+                            "materials": "主要原料：苹果汁",
+                            "image_path": "74d5e3dd9552b41838e7f13b05930cb7jpeg",
+                            "month_sales": 1,
+                            "satisfy_rate": 0,
+                            "name": "天地一号",
+                            "price": "7"
+                        },
+                        {
+                            "materials": "主要原料：汽水",
+                            "image_path": "af5d34d3a37e30bf967561ea2137f667jpeg",
+                            "month_sales": 1,
+                            "satisfy_rate": 0,
+                            "name": "雪碧",
+                            "price": "5"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
