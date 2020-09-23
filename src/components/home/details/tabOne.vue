@@ -7,13 +7,17 @@
             <p class="name">{{foodsData.name}}</p>
             <scroll-row>
                 <ul class="list">
-                    <li v-for="(item,index) in foodsData.items" :key="item.item_id" class="foods">
+                    <li v-for="(item,index) in foodsData.items" :key="item.item_id" class="foods" @click="selectGoodsAction(item)">
                         <img :src="foodsData.foodImg[index]">
                         <div class="fod">
                             <h3>{{item.name}}</h3>
                             <div class="yue"><span>月售{{item.month_sales}}</span><span>好评{{item.satisfy_rate}}%</span></div>
                             <div class="price"><p>￥{{item.price}}</p>
-                                <span class="iconfont iconjia"></span>
+                                <div>
+                                    <span class="iconfont iconjian" v-show='isShow' @click="reduceAction"></span>
+                                    <span  v-if="goodsArr.forEach(ite=>{ite.id === item.item_id})" >{{}}</span>
+                                    <span class="iconfont iconjia" @click="addAction(item)"></span>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -23,31 +27,35 @@
         <div class="toggle">
             
                 <div class="left" >
-                    <scroll ref="left" class="scl">
+                    <div ref="left" class="scl">
                     <ul class="listOne">
-                        <li class="tab-list" v-for="(item,index) in detailsList.menu" :key="index" >
+                        <li class="tab-list" v-for="(item,index) in detailsList.menu" :key="index" @click="selectAction(index)">
                             <span>{{item.name}}</span>
                         </li>
                     </ul>
-                    </scroll>
+                    </div>
                 </div>
-                <div class="scroll-wrap" ref="wrap" :style="{height:wrapHeight}">
-                    <div class="scroll" >
-                        <div class="right">
+                <div class="scrollWrap" ref="wrp" :style="{height:wrapHeight}">
+                    <div class="scll" >
+                        <div class="right" >
                             <div class="listTwo">
-                                <div v-for="item in detailsList.menu" :key="item.item_id">
+                                <div v-for="(item) in detailsList.menu" :key="item.item_id" ref="scrol" >
                                     <div class="headline">
                                         <span class="desc1">{{item.name}}</span>
                                         <span class="desc2">{{item.description}}</span>
                                     </div>
-                                    <div v-for="(text,index) in item.foods" :key="index" class="caption">
+                                    <div v-for="(text,index) in item.foods" :key="index" class="caption" @click="selectGoodsAction(text)">
                                         <div class="image"><img src="https://cube.elemecdn.com/d/3a/9a79a24b3c98495b5917015c2108ajpeg.jpeg"></div>
                                         <div class="sales">
                                             <h3>{{text.name}}</h3>
                                             <p>{{text.materials}}</p>
                                             <div class="yue"><span>月售{{text.month_sales}}</span><span>好评{{text.satisfy_rate}}%</span></div>
                                             <div class="price"><p>￥{{text.price}}</p>
-                                                <span class="iconfont iconjia"></span>
+                                                <div>
+                                                    <span class="iconfont iconjian" @click="reduceAction" v-show='isShow'></span>
+                                                    <span v-show='isShow'>{{}}</span>
+                                                    <span class="iconfont iconjia" @click="addAction(text)"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -60,16 +68,21 @@
                 </div>
                 
         </div>
+            
       </div>
 </template>
-
+// category_id
 <script>
 import {mapState} from 'vuex'
 import downUpVue from '../../../../../../program/my-app/src/components/common/down-up.vue'
 export default {
     data(){
         return{
-            wrapHeight:''
+            wrapHeight:'',
+            tabShow:0,
+            srt:0,
+            isShow:false,
+            goodsArr:[]
         }
     },
     computed:{
@@ -79,24 +92,65 @@ export default {
         })
     },
     methods:{
-        handleScrollAction({x,y}){
+        touchAction(){
+            this.$emit('touchAction');
+        },
+        selectAction(index){
+            this.tabShow = index;
+            this.str = -1*(this.$refs.scrol[index].offsetTop) ;
+            console.log(this.str);
+            this.scr.scrollTo(0,this.str,300);
+        },
+        selectGoodsAction(item){
 
-        }
+        },
+        reduceAction(){
+
+        },
+        addAction(item){
+            // console.log(item);
+            if(localStorage.getItem('goods')){
+                this.goodsArr = JSON.parse(localStorage.getItem('goods'));
+            }
+            let flag = false;
+            let id = item.item_id;
+            // console.log(id);
+            this.goodsArr.map((item)=>{
+                // console.log(item);
+                if(item.id===id){
+                    item.num+=1;
+                    flag = true;
+                    return false;
+                }
+            });
+            if(!flag){
+                this.goodsArr.push({
+                    "id":item.item_id,
+                    "name":item.name,
+                    "num":1,
+                    "price":item.price
+                })
+            }
+            localStorage.setItem('goods',JSON.stringify(this.goodsArr));
+            console.log(this.goodsArr);
+        },
     },
     mounted(){
-        const scroll=new IScroll(this.$refs.wrap,{
+        const scr= this.scr=new IScroll(this.$refs.wrp,{
             tap: true,
             click: true,
             probeType: 3,
         });
-        scroll.on('beforeScrollStart', ()=>{
-        scroll.refresh();
+        scr.on('beforeScrollStart', ()=>{
+        scr.refresh();
         });
         this.wrapHeight = document.documentElement.clientHeight -220 +'px';
         // console.log(this.wrapHeight);
         this.$refs.box.addEventListener('touchstart',()=>{
             this.$emit('touchAction');
         })
+        
+        
     }
 }
 </script>
@@ -149,7 +203,7 @@ export default {
                         font-size: 28px;
                         color: #333;
                         margin: 14px 0 7px;
-                         white-space:nowrap;
+                        white-space:nowrap;
                         overflow:hidden;
                         text-overflow:ellipsis;
                     }
@@ -182,7 +236,7 @@ export default {
             }
         }
     }
-    .scroll-wrap{
+    .scrollWrap{
         overflow: hidden;
     }
     .toggle{
@@ -216,6 +270,10 @@ export default {
         }
         .right{
             width: 100%;
+            position: relative;
+            .tabList{
+                position: absolute;
+            }
             .listTwo{
                 width: 100%;
                 .headline{
@@ -254,11 +312,15 @@ export default {
                         display: flex;
                         flex-direction: column;
                         h3{
+                            width: 300px;
                             font-size: 30px;
                             color: #333;
                             height: 36px;
                             line-height: 36px;
                             font-weight: 700;
+                            white-space:nowrap;
+                            overflow:hidden;
+                            text-overflow:ellipsis;
                         }
                         p{
                             margin: 10px 0;

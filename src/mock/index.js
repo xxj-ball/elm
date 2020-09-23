@@ -19,3 +19,8 @@ mock('http://localhost:8080/api/details',()=>{
     
     return require('./json/home/details.json');
 });
+
+mock('http://localhost:8080/api/rate',()=>{
+    
+    return require('./json/home/rate.json');
+});

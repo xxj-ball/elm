@@ -8,5 +8,7 @@ export const GOODS_API = '/goods';
 
 export const DETAILS_API = '/details';
 
+export const RATE_API = '/rate';
+
 
 

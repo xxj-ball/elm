@@ -1,11 +1,11 @@
 <template>
-<div class="sc" ref="sc">
+<div class="sc" ref="Wrap">
   <div class="header">
       <div class="image" :style="{backgroundImage:'url(https://cube.elemecdn.com/5/37/ee95509e19a4001f2a86c369d2d96png.png)'}">
           <span class="iconfont iconfanhui" @click="backAction"></span>
       </div>
       <img src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=534333352,2268662817&fm=26&gp=0.jpg' class="logo">
-      <div class="title">
+      <div class="title" v-if="detailsList.rst">
           <h3 class="tit">{{detailsList.rst.name}}</h3>
           <div class="evaluate">
               <span>评价{{detailsList.rst.rating}}</span>
@@ -28,18 +28,37 @@
           </div>
           
       </div>
-      <tab-one @touchAction='touchAction'/>
+      <tab-one  :class="{posi:posi}" v-show="(text=='点餐')"/>
+      <tab-two  :class="{posi:posi}" v-show="(text=='评价')"/>
+      <tab-three  :class="{posi:posi}" v-show="(text=='商家')"/>
       
   </div>
-  </div>
+        <div class="bottom" v-if="text=='点餐'">
+            <div class="jian"><span>满20减2</span>
+            </div>
+            <div class="chart">
+                <div class="iconfont iconshopCar"></div>
+                <div class="shang">未选购商品</div>
+                <div class="song">￥20起送</div>
+            </div>
+        </div>
+        <div class="xian" v-show="isGoods">
+            
+        </div>
+  
+</div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
 import tabOne from './details/tabOne'
+import tabTwo from './details/tabTwo'
+import tabThree from './details/tabThree'
 export default {
     components:{
-        tabOne
+        tabOne,
+        tabTwo,
+        tabThree
     },
     props:{
         da:String
@@ -50,7 +69,9 @@ export default {
             tabList:['点餐','评价','商家'],
             text:'点餐',
             tabShow:false,
-            heig:''
+            heig:'',
+            posi:false,
+            isGoods:false
         }
     },
     computed:{
@@ -70,11 +91,14 @@ export default {
         },
         touchAction(){
             // this.scroll.scrollTo(0,-466,300);
+            // this.posi=true;
         }
     },
     mounted(){
         // console.log(this.$refs.tab.offsetTop);
-        const scroll=this.scroll=new IScroll(this.$refs.sc,{
+        // console.log(this.$refs);
+        // console.log(this.$refs.Wrap);
+        const scroll=this.scroll = new IScroll(this.$refs.Wrap,{
             tap: true,
             click: true,
             probeType: 3,
@@ -90,7 +114,8 @@ export default {
             }else{
                 this.tabShow = false;
             }
-        })
+        });
+        
     }
 }
 </script>
@@ -100,10 +125,70 @@ export default {
     height: 100%;
     overflow: hidden;
 }
+.posi{
+    position: absolute;
+    top: 80px;
+}
 .act{
     position: absolute;
     left: 0;
     top: 0;
+    z-index: 900;
+}
+.xian{
+    width: 100%;
+    height: 40px;
+    background: chartreuse;
+    position: absolute;
+    left: 0;
+    bottom: 96px;
+    z-index: 500;
+}
+.bottom{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    .jian{
+        width: 100%;
+        height: 40px;
+        background: #fffad6;
+        text-align: center;
+        span{
+            font-size: 20px;
+            height: 20px;
+            color: #333;
+            line-height: 40px;
+        }
+    }
+    .chart{
+        width: 100%;
+        height: 96px;
+        background: rgba(61,61,63,.9);
+        display: flex;
+        .iconfont{
+            width: 80px;
+            height: 80px;
+            font-size: 80px;
+            position: absolute;
+            left: 20px;
+            bottom: 40px;
+            z-index: 600;
+        }
+        .shang{
+            margin-left: 150px;
+            line-height: 96px;
+            font-size: 25px;
+            color: #999;
+        }
+        .song{
+            line-height: 96px;
+            color: #fff;
+            font-size: 22px;
+            position: absolute;
+            right: 20px;
+        }
+    }
 }
 .header{
     width: 100%;
