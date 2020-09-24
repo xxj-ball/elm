@@ -3,22 +3,28 @@ import { RATE_API} from '../../api/url';
 export default{
     namespaced:true,
     state:{
-        entriesData:[]
+        rateData:[]
     },
     getters:{
 
     },
     mutations:{
-        // setDataAction(state,payload){
-        //     state.entriesData=payload;
-        // }
+        setDataAction(state,payload){
+            state.rateData=payload;
+            // console.log(state.rateData);
+        }
     },
     actions:{
-        async requestRate(context){
-            let result= await http.get(RATE_API);
-            console.log(result);
-            // context.commit('setDataAction',result);
-            
+        async requestRate(context,id){
+            // console.log(id);
+            let {data:{data}}= await http.get(RATE_API);
+            data.map(item=>{
+                if(item.id===id){
+                    context.commit('setDataAction',item);
+                    console.log(item);
+                }
+            })
+        
         }
     }
 }

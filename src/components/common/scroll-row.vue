@@ -10,8 +10,6 @@
 export default {
     mounted(){
         const scroll=new IScroll(this.$refs.wrap,{
-            tap: true,
-            click: true,
             probeType: 3,
             scrollX:true,
             scrollY:false

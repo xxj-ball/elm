@@ -1,6 +1,6 @@
 <template>
-  <div class="details">
-      <details-header/>
+  <div class="details" >
+      <details-header />
   </div>
 </template>
 
@@ -8,6 +8,9 @@
 import {mapState} from 'vuex'
 import detailsHeader from '../components/home/details-header'
 export default {
+    props:{
+        id:String
+    },
     components:{
         detailsHeader
     },
@@ -19,6 +22,7 @@ export default {
     created(){
         // console.log(this.$route.params.id);
         this.$store.dispatch('details/requestDetails',this.$route.params.id);
+        this.$store.dispatch('rate/requestRate',this.$route.params.id);
     }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <router-view :da='img'/>
+  <router-view :id='id'/>
   <div class="home pages">
     <div class="scrollWrap" ref="scroll">
       <div class="view">
@@ -75,7 +75,7 @@ export default {
       rankText:'综合排序',
       selectShow:false,
       sailData:['￥20以下','￥20-￥40','￥40-￥60','￥60-￥80','￥80-￥100','￥100以上'],
-      img:''
+      id:''
     }
   },
   computed:{
@@ -113,9 +113,9 @@ export default {
     closeAction(){
       this.selectShow=false;
     },
-    imgAction(img){
-      this.img = img;
-      // console.log(img);
+    imgAction(id){
+      this.id = id;
+      // console.log(id);
     }
   },
   created(){
@@ -124,8 +124,7 @@ export default {
     },
     mounted(){
         const scroll= this.scroll=new IScroll(this.$refs.scroll,{
-            tap: true,
-            click: true,
+            
             probeType: 3,
         });
         scroll.on('beforeScrollStart', ()=>{

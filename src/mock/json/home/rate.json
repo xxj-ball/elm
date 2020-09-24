@@ -2986,7 +2986,7 @@
         "rider_good_rate": 0.9589,
         "rider_score": "4.80",
         "service_score": "댌솉먬먬먬먬먬먬뽭댌젲솠솉젲쒥",
-        "shop_score": 4.62,
+        "shop_score": "4.62",
         "taste_score": "4.59"
     },
     "tags": [
@@ -3020,7 +3020,8 @@
             "name": "味道好",
             "unsatisfied": false
         }
-    ]
+    ],
+    "id":"E12346664032563767099"
     },
     {
         "comments": [
@@ -3621,7 +3622,7 @@
             "rider_good_rate": 0.96964,
             "rider_score": "4.91",
             "service_score": "댌솉젲솉먬쒥솉젲뽭",
-            "shop_score": 4.5,
+            "shop_score": "4.50",
             "taste_score": "4.54"
         },
         "tags": [
@@ -3650,7 +3651,8 @@
                 "name": "有图",
                 "unsatisfied": false
             }
-        ]
+        ],
+        "id":"E1949113584006733183"
     },
     {
         "comments": [
@@ -4167,7 +4169,7 @@
             "rider_good_rate": 0.92982,
             "rider_score": "4.85",
             "service_score": "댌댌먬먬먬먬먬뽭댌젲솠솉젲쒥",
-            "shop_score": 4.30,
+            "shop_score": "4.30",
             "taste_score": "4.63"
         },
         "tags": [
@@ -4196,7 +4198,8 @@
                 "name": "有图",
                 "unsatisfied": false
             }
-        ]
+        ],
+        "id":"E12815142159814497049"
     },
     {
         "comments": [
@@ -6036,7 +6039,7 @@
             "rider_good_rate": 0.875,
             "rider_score": "4.78",
             "service_score": "댌댌먬솠먬먬솠뽭먬젲솉",
-            "shop_score": 4.46,
+            "shop_score": "4.46",
             "taste_score": "4.30"
         },
         "tags": [
@@ -6105,7 +6108,8 @@
                 "name": "分量一般",
                 "unsatisfied": true
             }
-        ]
+        ],
+        "id":"E1688887235171195401"
     },
     {
         "comments": [
@@ -6879,7 +6883,7 @@
             "rider_good_rate": 0.92063,
             "rider_score": "4.72",
             "service_score": "댌댌먬뽭솠뽭뽭뽭댌솠솠댌젲뽭먬",
-            "shop_score": 4.50,
+            "shop_score": "4.50",
             "taste_score": "4.74"
         },
         "tags": [
@@ -6908,7 +6912,8 @@
                 "name": "有图",
                 "unsatisfied": false
             }
-        ]
+        ],
+        "id":"E5374262108070134112"
     }
 ]
 }

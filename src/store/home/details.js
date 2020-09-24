@@ -13,7 +13,7 @@ export default{
     mutations:{
         setData(state,payload){
             state.detailsList = payload;
-            console.log(state.detailsList);
+            // console.log(state.detailsList);
         },
         // setImg(state,payload){
         //     state.dataImg = payload;
@@ -37,7 +37,7 @@ export default{
             result.map((item)=>{
                 // console.log(item.rst.id);
                 if(item.rst.id==payload){
-                   console.log(item);
+                //    console.log(item);
                     context.commit('setData',item);
                     // let path1 = `https://cube.elemecdn.com/${item.rst.shop_sign.image_hash.slice(0,1)}/${item.rst.shop_sign.image_hash.slice(1, 3)}/${item.rst.shop_sign.image_hash.slice(3)}.${(item.rst.shop_sign.image_hash.match(/(JPEG|jpeg|png|PNG)/g))}`;   
                     // let path2 = `https://cube.elemecdn.com/${item.rst.image_path.slice(0,1)}/${item.rst.image_path.slice(1, 3)}/${item.rst.image_path.slice(3)}.${(item.rst.image_path.match(/(JPEG|jpeg|png|PNG)/g))}`;

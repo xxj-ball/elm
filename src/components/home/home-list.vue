@@ -93,7 +93,7 @@ export default {
         },
         detailsAction(item,index){
             this.$router.push({name:'details',params:{id:item.id}})
-            this.$emit('imgAction',item.image_path);
+            this.$emit('imgAction',item.id);
         }
     },
     mounted(){

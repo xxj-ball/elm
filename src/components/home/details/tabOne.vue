@@ -7,7 +7,7 @@
             <p class="name">{{foodsData.name}}</p>
             <scroll-row>
                 <ul class="list">
-                    <li v-for="(item,index) in foodsData.items" :key="item.item_id" class="foods" @click="selectGoodsAction(item)">
+                    <li v-for="(item,index) in foodsData.items" :key="item.item_id" class="foods" @click="selectGoodsAction(item,index)">
                         <img :src="foodsData.foodImg[index]">
                         <div class="fod">
                             <h3>{{item.name}}</h3>
@@ -15,7 +15,7 @@
                             <div class="price"><p>￥{{item.price}}</p>
                                 <div>
                                     <span class="iconfont iconjian" v-show='isShow' @click="reduceAction"></span>
-                                    <span  v-if="goodsArr.forEach(ite=>{ite.id === item.item_id})" >{{}}</span>
+                                    <span ref="number"></span>
                                     <span class="iconfont iconjia" @click="addAction(item)"></span>
                                 </div>
                             </div>
@@ -101,14 +101,14 @@ export default {
             console.log(this.str);
             this.scr.scrollTo(0,this.str,300);
         },
-        selectGoodsAction(item){
-
+        selectGoodsAction(item,index){
+            // this.$refs.number[index].innerText++;
         },
         reduceAction(){
 
         },
         addAction(item){
-            // console.log(item);
+            
             if(localStorage.getItem('goods')){
                 this.goodsArr = JSON.parse(localStorage.getItem('goods'));
             }
@@ -132,13 +132,11 @@ export default {
                 })
             }
             localStorage.setItem('goods',JSON.stringify(this.goodsArr));
-            console.log(this.goodsArr);
+            // console.log(this.goodsArr);
         },
     },
     mounted(){
         const scr= this.scr=new IScroll(this.$refs.wrp,{
-            tap: true,
-            click: true,
             probeType: 3,
         });
         scr.on('beforeScrollStart', ()=>{
@@ -149,7 +147,6 @@ export default {
         this.$refs.box.addEventListener('touchstart',()=>{
             this.$emit('touchAction');
         })
-        
         
     }
 }
