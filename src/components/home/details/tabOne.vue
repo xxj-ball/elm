@@ -108,7 +108,7 @@ export default {
 
         },
         addAction(item){
-            
+            this.$emit('addGoodsAction');
             if(localStorage.getItem('goods')){
                 this.goodsArr = JSON.parse(localStorage.getItem('goods'));
             }
@@ -128,7 +128,8 @@ export default {
                     "id":item.item_id,
                     "name":item.name,
                     "num":1,
-                    "price":item.price
+                    "price":item.price,
+                    "ride_price":2
                 })
             }
             localStorage.setItem('goods',JSON.stringify(this.goodsArr));

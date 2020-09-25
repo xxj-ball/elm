@@ -5,7 +5,8 @@ export default{
     state:{
         detailsList:[],
         dataImg:{},
-        foodsData:[]
+        foodsData:[],
+        rstData:{}
     },
     getters:{
 
@@ -13,7 +14,7 @@ export default{
     mutations:{
         setData(state,payload){
             state.detailsList = payload;
-            // console.log(state.detailsList);
+            console.log(state.detailsList);
         },
         // setImg(state,payload){
         //     state.dataImg = payload;
@@ -21,6 +22,10 @@ export default{
         setDataAction(state,payload){
             state.foodsData = payload;
             // console.log(state.foodsData);
+        },
+        rstAction(state,payload){
+            state.rstData = payload;
+            console.log(state.rstData);
         }
     },
     actions:{
@@ -46,8 +51,10 @@ export default{
                     let foodImg = item.recommend.items.map(item=>`https://cube.elemecdn.com/${item.image_path.slice(0,1)}/${item.image_path.slice(1, 3)}/${item.image_path.slice(3)}.${(item.image_path.match(/(JPEG|jpeg|png|PNG)/g))}`)
                      let foodsData = {...item.recommend,foodImg} 
                      context.commit('setDataAction',foodsData);
-                    
+                     let rst = item.rst;
+                     context.commit('rstAction',rst);
                 }
+                     
             })
 
             // context.commit('setDataAction',result);

@@ -5,6 +5,7 @@ import filter from './home/filter'
 import goods from './home/goods'
 import details from './home/details'
 import rate from './home/rate'
+import order from './order/order'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,6 +20,7 @@ export default new Vuex.Store({
     filter,
     goods,
     details,
-    rate
+    rate,
+    order
   }
 })

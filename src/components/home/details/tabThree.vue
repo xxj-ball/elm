@@ -4,14 +4,14 @@
         <h3>配送信息</h3>
         <div class="distance">
           <div class="courier">蓝骑士专送</div>
-          <span>约40分钟送达，</span>
-          <span>距离304米</span>
+          <span>约{{rstData.order_lead_time}}分钟送达，</span>
+          <span>距离{{rstData.distance_text}}</span>
         </div>
-        <p>配送费￥0.0</p>
+        <p>配送费￥{{rstData.float_delivery_fee}}.0</p>
       </div>
       <div class="service">
         <h3>商家服务</h3>
-        <p>该商户已购买食品安全责任险，食品安全有保障</p>
+        <p v-if='rstData.supports'>{{rstData.supports[0].description}}</p>
       </div>
       <div class="scenery">
         <h3>商家实景</h3>
@@ -26,7 +26,7 @@
         </div>
         <div class="category">
           <p class="lei">品类</p>
-          <span>川湘菜</span>
+          <span v-if='rstData.flavors'>{{rstData.flavors[0].name}}</span>
         </div>
         <div class="phone">
           <p>商家电话</p>
@@ -34,11 +34,11 @@
         </div>
         <div class="address">
           <p>地址</p>
-          <div></div>
+          <div>{{rstData.address}}</div>
         </div>
         <div class="time">
           <p>营业时间</p>
-          <span>10:00-23:00</span>
+          <span v-if="rstData.opening_hours">{{rstData.opening_hours[0]}}</span>
         </div>
       </div>
       <div class="qualification">
@@ -48,8 +48,13 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
-
+  computed:{
+    ...mapState({
+      rstData:state=>state.details.rstData,
+    })
+  }
 }
 </script>
 
@@ -167,13 +172,18 @@ export default {
       padding: 30px 30px 30px 0;
       display: flex;
       justify-content: space-between;
-      border-bottom: 1Px solid #999;
+      border-bottom: 1px solid #999;
       p{
         font-weight: 700;
       }
       .lei{
         color: #333;
         font-size: 26px;
+      }
+    }
+    .address{
+      div{
+        max-width: 400px;
       }
     }
     .time{
